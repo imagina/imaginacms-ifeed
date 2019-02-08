@@ -1,0 +1,18 @@
+{
+    "name": "Ifeeds",
+    "alias": "ifeeds",
+    "version": "0.0.1",
+    "description": "",
+    "keywords": ["feed, articles, blog, notices"],
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Ifeeds\\Providers\\IfeedsServiceProvider",
+        "Modules\\Ifeeds\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}

@@ -10,7 +10,7 @@ class rss
     $fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
     $fileContents = trim(str_replace('"', "'", $fileContents));
     $simpleXml = simplexml_load_string($fileContents);
-    $json = json_encode($simpleXml);
+    $json = json_decode(json_encode($simpleXml))->channel;
     return $json;
   }
 

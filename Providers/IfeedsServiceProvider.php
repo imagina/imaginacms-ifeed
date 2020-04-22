@@ -36,7 +36,7 @@ class IfeedsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishConfig('ifeeds', 'permissions');
-        $this->publishConfig('ifeeds', 'config');
+
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 

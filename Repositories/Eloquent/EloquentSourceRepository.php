@@ -31,16 +31,11 @@ class EloquentSourceRepository extends EloquentBaseRepository implements SourceR
       if (isset($filter->search)) {
         //find search in columns
         $query->where(function ($query) use ($filter) {
-          $query->whereHas('translations', function ($query) use ($filter) {
-            $query->where('locale', $filter->locale)
-              ->where('title', 'like', '%' . $filter->search . '%');
-          })->orWhere('id', 'like', '%' . $filter->search . '%')
+          $query->Where('id', 'like', '%' . $filter->search . '%')
+            ->orWhere('name', 'like', '%' . $filter->search . '%')
             ->orWhere('updated_at', 'like', '%' . $filter->search . '%')
             ->orWhere('created_at', 'like', '%' . $filter->search . '%');
         });
-      }
-      if (isset($filter->store)) {
-        $query->where('store_id', $filter->store);
       }
 
       //Filter by date
@@ -59,13 +54,20 @@ class EloquentSourceRepository extends EloquentBaseRepository implements SourceR
         $orderWay = $filter->order->way ?? 'desc';//Default way
         $query->orderBy($orderByField, $orderWay);//Add order to query
       }
-      if (isset($filter->store)) {
-        $query->where("store_id", $filter->store);
+
+
+      if (isset($filter->type)) {
+        $query->where("type", $filter->type);
       }
-      //Filter by parent ID
-      if (isset($filter->parentId)) {
-        $query->where("parent_id", $filter->parentId);
+
+      if (isset($filter->status)) {
+        $query->where("status", $filter->status);
       }
+
+      if (isset($filter->user)) {
+        $query->where("user_id", $filter->user);
+      }
+
     }
 
     /*== FIELDS ==*/

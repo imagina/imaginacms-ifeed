@@ -29,7 +29,11 @@ class IfeedsServiceProvider extends ServiceProvider
         $this->app['events']->listen(BuildingSidebar::class, RegisterIfeedsSidebar::class);
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+
+            $event->load('sources', array_dot(trans('ifeeds::sources')));
             // append translations
+
+
         });
     }
 
@@ -52,6 +56,20 @@ class IfeedsServiceProvider extends ServiceProvider
 
     private function registerBindings()
     {
+        $this->app->bind(
+            'Modules\Ifeeds\Repositories\SourceRepository',
+            function () {
+                $repository = new \Modules\Ifeeds\Repositories\Eloquent\EloquentSourceRepository(new \Modules\Ifeeds\Entities\Source());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\Ifeeds\Repositories\Cache\CacheSourceDecorator($repository);
+            }
+        );
 // add bindings
+
+
     }
 }

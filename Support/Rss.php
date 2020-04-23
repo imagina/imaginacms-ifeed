@@ -6,10 +6,7 @@ class rss
 {
 
   public function Parse ($url) {
-    $fileContents= file_get_contents($url);
-    $fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
-    $fileContents = trim(str_replace('"', "'", $fileContents));
-    $simpleXml = simplexml_load_string($fileContents);
+    $simpleXml = simplexml_load_file($url, "SimpleXMLElement", LIBXML_NOCDATA);
     $json = json_decode(json_encode($simpleXml))->channel;
     return $json;
   }

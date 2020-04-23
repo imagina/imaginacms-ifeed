@@ -16,9 +16,13 @@ use Modules\Ifeeds\Http\Requests\UpdateSourceRequest;
 
 // Transformers
 use Modules\Ifeeds\Transformers\SourceTransformer;
+use Modules\Ifeeds\Transformers\SourceFeedTransformer;
 
 // Repositories
 use Modules\Ifeeds\Repositories\SourceRepository;
+
+// Facades
+use Modules\Ifeeds\Support\Facades\Rss;
 
 
 class SourceApiController extends BaseApiController {
@@ -39,6 +43,7 @@ class SourceApiController extends BaseApiController {
       $params = $this->getParamsRequest($request);
       $sources = $this->source->getItemsBy($params);
       $response = ['data' => SourceTransformer::collection($sources)];
+      $params->page ? $response["meta"] = ["page" => $this->pageTransformer($sources)] : false;
       $status = 200;
     } catch (Exception $exception) {
       Log::Error($exception);
@@ -138,4 +143,19 @@ class SourceApiController extends BaseApiController {
     return response()->json($response, $status);
   }
 
+  public function feed ($criteria, Request $request) {
+    try {
+      $params = $this->getParamsRequest($request);
+      $source = $this->source->getItem($criteria, $params);
+      if(!$source) throw new Exception('Item not found',404);
+      $data = new SourceFeedTransformer($source);
+      $response = ['data' => $data];
+      $status = 200;
+    } catch (Exception $exception) {
+      Log::Error($exception);
+      $status = $this->getStatusError($exception->getCode());
+      $response = ['errors' => $exception->getMessage()];
+    }
+    return response()->json($response, $status);
+  }
 }

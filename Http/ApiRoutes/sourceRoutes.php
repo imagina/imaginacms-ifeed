@@ -23,6 +23,12 @@ $router->group(['prefix' => '/sources'], function (Router $router) {
     'uses' => 'SourceApiController@show',
   ]);
 
+  //Route show
+  $router->get('/{criteria}/feed', [
+    'as' => 'api.ifeeds.sources.get.feed',
+    'uses' => 'SourceApiController@feed',
+  ]);
+
   //Route update
   $router->put('/{criteria}', [
     'as' => 'api.ifeeds.sources.update',

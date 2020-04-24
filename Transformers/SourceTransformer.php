@@ -10,6 +10,7 @@ class SourceTransformer extends Resource
   public function toArray($request)
   {
     $data = [
+      'id' => $this->when($this->id, $this->id),
       'name' => $this->when($this->name, $this->name),
       'url' => $this->when($this->url, $this->url),
       'type' => $this->type,

@@ -1,4 +1,4 @@
-# Ifeeds 🚩
+# Ifeeds 🚩 v 1.0.2
 
 ## Installation
 

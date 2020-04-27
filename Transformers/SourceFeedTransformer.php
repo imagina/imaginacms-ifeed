@@ -28,7 +28,7 @@ class SourceFeedTransformer extends Resource
     foreach ($originalDataItem as $key => $item){
       foreach ($itemConfigTransform as $k => $itemTransform) {
         $originalItem = collect($item);
-        if ($originalItem->has($itemTransform) && gettype($originalItem[$sourceTransform]) == 'string'){
+        if ($originalItem->has($itemTransform) && gettype($originalItem[$itemTransform]) == 'string'){
           $data['item'][$key][$k] = $originalItem[$itemTransform];
         } else {
           $args = explode('.',$itemTransform);

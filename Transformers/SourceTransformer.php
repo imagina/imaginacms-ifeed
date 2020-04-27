@@ -3,7 +3,7 @@
 namespace Modules\Ifeeds\Transformers;
 
 use Illuminate\Http\Resources\Json\Resource;
-use Modules\User\Transformers\UserProfileTransformer;
+use Modules\Iprofile\Transformers\UserTransformer;
 
 class SourceTransformer extends Resource
 {
@@ -17,7 +17,7 @@ class SourceTransformer extends Resource
       'status' => $this->status,
       'userId' => $this->when($this->user_id, $this->user_id),
       'options' => $this->when($this->options, $this->options),
-      'user' => new UserProfileTransformer($this->whenLoaded('user')),
+      'user' => new UserTransformer($this->whenLoaded('user')),
     ];
 
     return $data;

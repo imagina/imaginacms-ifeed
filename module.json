@@ -1,19 +1,16 @@
 {
-    "name": "Ifeeds",
-    "alias": "ifeeds",
-    "description": "",
+    "name": "Ifeed",
+    "alias": "ifeed",
+    "version": "1.0.0",
+	"description": "",
     "keywords": [],
-    "version": "1.0.2",
-    "active": 1,
-    "order": 1,
+    "priority": 1,
     "providers": [
-        "Modules\\Ifeeds\\Providers\\IfeedsServiceProvider",
-        "Modules\\Ifeeds\\Providers\\RouteServiceProvider",
-        "Modules\\Ifeeds\\Providers\\RssServiceProvider"
+        "Modules\\Ifeed\\Providers\\IfeedServiceProvider",
+        "Modules\\Ifeed\\Providers\\EventServiceProvider",
+        "Modules\\Ifeed\\Providers\\RouteServiceProvider"
     ],
     "aliases": {},
-    "files": [
-        
-    ],
+    "files": [],
     "requires": []
 }

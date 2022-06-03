@@ -1,42 +1,20 @@
 <?php
 
-namespace Modules\Ifeeds\Http\Controllers\Api;
+namespace Modules\Ifeed\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Modules\Ihelpers\Http\Controllers\Api\BaseApiController;
-use Modules\Ifeeds\Transformers\FeedTransformer;
-use Modules\Ifeeds\Support\Facades\Rss;
-use Exception;
+use Modules\Core\Icrud\Controllers\BaseCrudController;
+//Model
+use Modules\Ifeed\Entities\Feed;
+use Modules\Ifeed\Repositories\FeedRepository;
 
-class FeedApiController extends BaseApiController
+class FeedApiController extends BaseCrudController
 {
-  /**
-   * @param Request $request
-   * @return mixed
-   */
-  public function index(Request $request)
+  public $model;
+  public $modelRepository;
+
+  public function __construct(Feed $model, FeedRepository $modelRepository)
   {
-    try {
-      /* Get Parameters from URL */
-      $params = $this->getParamsRequest($request);
-      if(!isset($params->filter->source) && empty($params->filter->source)){
-        throw new Exception("Source is required");
-      }
-      /* Request to Repository */
-      $originalData = collect(Rss::parse($params->filter->source));
-      /* Transform data just if exist $params->filter->fields */
-      $data = isset($params->filter->fields)
-        ? new FeedTransformer($originalData)
-        : $originalData;
-      /* Response */
-      $response = [ "data" => $data ];
-      $status = 200;
-    } catch (Exception $exception) {
-      $status = $this->getStatusError($exception->getCode());
-      $response = [ "errors" => $exception->getMessage() ];
-    }
-    /* Return response */
-    return response()->json($response, $status);
+    $this->model = $model;
+    $this->modelRepository = $modelRepository;
   }
 }

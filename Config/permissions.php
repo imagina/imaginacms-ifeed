@@ -1,13 +1,14 @@
 <?php
 
 return [
-    'ifeeds.sources' => [
-        'index' => 'ifeeds::sources.list resource',
-        'create' => 'ifeeds::sources.create resource',
-        'edit' => 'ifeeds::sources.edit resource',
-        'destroy' => 'ifeeds::sources.destroy resource',
+    'ifeed.feeds' => [
+        'manage' => 'ifeed::feeds.manage resource',
+        'index' => 'ifeed::feeds.list resource',
+        'create' => 'ifeed::feeds.create resource',
+        'edit' => 'ifeed::feeds.edit resource',
+        'destroy' => 'ifeed::feeds.destroy resource',
+        'restore' => 'ifeed::feeds.restore resource',
     ],
 // append
-
 
 ];

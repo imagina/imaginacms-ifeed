@@ -1,44 +1,46 @@
 {
-    "name": "imagina/ifeeds-module",
+    "name": "imagina/ifeed-module",
     "description": "",
     "type": "asgard-module",
-    "license": "MIT", 
+    "license": "MIT",
     "require": {
-        "php": ">=7.0.0",
+        "php": "^7.1.3",
         "composer/installers": "~1.0",
-        "idavoll/core-module": "~3.0"
+        "imagina/core-module": "v8.x-dev",
+        "spatie/laravel-feed": "^2.7"
     },
     "require-dev": {
-        "phpunit/phpunit": "~6.0",
-        "orchestra/testbench": "3.5.*"
+        "phpunit/phpunit": "~7.0",
+        "orchestra/testbench": "3.8.*"
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Ifeeds\\": ".",
+            "Modules\\Ifeed\\": ".",
             "Modules\\": "Modules/"
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "Soporte Imagina",
+            "email": "soporte@imaginacolombia.com"
         }
     ],
     "extra": {
         "laravel": {
-            "providers": [
-                "Modules\\Ifeeds\\Providers\\IfeedsServiceProvider"
-            ],
+            "providers": [],
             "aliases": {
-                
+
             }
+        },
+        "branch-alias": {
+            "dev-v8.x": "8.0.x-dev"
         }
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Ifeeds\\": ""
+            "Modules\\Ifeed\\": ""
         }
     }
 }

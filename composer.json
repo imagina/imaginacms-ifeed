@@ -1,5 +1,5 @@
 {
-    "name": "imagina/ifeeds-module",
+    "name": "imagina/ifeed-module",
     "description": "",
     "type": "asgard-module",
     "license": "MIT", 
@@ -14,7 +14,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Ifeeds\\": ".",
+            "Modules\\Ifeed\\": ".",
             "Modules\\": "Modules/"
         }
     },
@@ -22,14 +22,14 @@
     "prefer-stable": true,
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "Soporte Imagina",
+            "email": "soporte@imaginacolombia.com"
         }
     ],
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\Ifeeds\\Providers\\IfeedsServiceProvider"
+                "Modules\\Ifeed\\Providers\\IfeedsServiceProvider"
             ],
             "aliases": {
                 

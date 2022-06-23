@@ -25,6 +25,6 @@ class Post extends EntityPost implements Feedable
 
   public static function getFeedItems()
   {
-    return Post::orderBy('updated_at', 'desc')->limit(setting('limit_posts_rss'))->get();
+    return Post::orderBy('updated_at', 'desc')->limit(setting('ifeed::limitPostsRss'))->get();
   }
 }

@@ -23,6 +23,6 @@ class Product extends EntityProducts implements Feedable
   }
   public static function getFeedItems()
   {
-    return Product::orderBy('updated_at', 'desc')->limit(setting('limit_products_rss'))->get();
+    return Product::orderBy('updated_at', 'desc')->limit(setting('ifeed::limitProductsRss'))->get();
   }
 }

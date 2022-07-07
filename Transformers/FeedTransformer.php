@@ -1,24 +1,18 @@
 <?php
 
-namespace Modules\Ifeeds\Transformers;
+namespace Modules\Ifeed\Transformers;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Modules\Core\Icrud\Transformers\CrudResource;
 
-class FeedTransformer extends Resource
+class FeedTransformer extends CrudResource
 {
-  public function toArray($request)
+  /**
+  * Method to merge values with response
+  *
+  * @return array
+  */
+  public function modelAttributes($request)
   {
-
-    $filter = json_decode($request->filter);
-
-    $data = [];
-
-    foreach ($filter->fields as $field){
-      if(!empty($field)){
-        $data[$field] = $this[$field];
-      }
-    }
-
-    return $data;
+    return [];
   }
 }

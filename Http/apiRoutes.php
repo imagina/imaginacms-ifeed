@@ -2,14 +2,13 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => '/ifeeds/v1'], function (Router $router) {
-
-  require('ApiRoutes/feedRoutes.php');
-
-  require('ApiRoutes/sourceRoutes.php');
-
-  require('ApiRoutes/TypeRoutes.php');
-
-  require('ApiRoutes/StatusRoutes.php');
+$router->group(['prefix' =>'/ifeed/v1'], function (Router $router) {
+    $router->apiCrud([
+      'module' => 'ifeed',
+      'prefix' => 'feeds',
+      'controller' => 'FeedApiController',
+      //'middleware' => ['create' => [], 'index' => [], 'show' => [], 'update' => [], 'delete' => [], 'restore' => []]
+    ]);
+// append
 
 });

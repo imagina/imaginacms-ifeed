@@ -46,7 +46,7 @@ class IfeedServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ifeed', 'settings-fields'), "asgard.ifeed.settings-fields");
         $this->mergeConfigFrom($this->getModuleConfigFilePath('ifeed', 'permissions'), "asgard.ifeed.permissions");
 
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        //$this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

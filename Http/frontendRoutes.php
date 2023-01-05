@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 use Illuminate\Support\Str;
 
-Router::feeds();
+//Router::feeds();
 $url = url('/');
 $url = str_replace('https://','',$url);
 config(['feed.feeds.posts.title' => trans('ifeed::feeds.title.titlePosts') . $url]);

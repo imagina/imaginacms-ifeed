@@ -8,21 +8,20 @@ use Spatie\Feed\FeedItem;
 
 class Product extends EntityProducts implements Feedable
 {
-    public function toFeedItem(): FeedItem
-    {
-        return FeedItem::create([
-            'id' => $this->id,
-            'title' => $this->name,
-            'summary' => $this->summary,
-            'author' => @setting('core::site-name'),
-            'updated' => $this->updated_at,
-            'link' => $this->url,
-            'status' => $this->status,
-        ]);
-    }
-
-    public static function getFeedItems()
-    {
-        return Product::orderBy('updated_at', 'desc')->limit(setting('ifeed::limitProductsRss'))->get();
-    }
+  public function toFeedItem(): FeedItem
+  {
+    return FeedItem::create([
+      'id' => $this->id,
+      'title' => $this->name,
+      'summary' => $this->summary,
+      'author' => @setting('core::site-name'),
+      'updated' => $this->updated_at,
+      'link' => $this->url,
+      'status' => $this->status,
+    ]);
+  }
+  public static function getFeedItems()
+  {
+    return Product::orderBy('created_at', 'desc')->get();
+  }
 }

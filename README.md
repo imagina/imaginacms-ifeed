@@ -21,3 +21,26 @@ php artisan module:migrate Ifeed
 ```bash
 php artisan module:seed Ifeed
 ```
+
+## Publish Config Feed
+
+```bash
+php artisan vendor:publish --provider="Spatie\Feed\FeedServiceProvider" --tag="feed-views"
+```
+
+## Update View to Products
+
+```bash
+ 'view' => 'ifeed::frontend.product.feed',
+```
+
+## URL
+
+### Base
+    mywebsite/feed/products
+
+### With params
+
+    /feed/products?filter={"category":x}&take=x
+
+    /feed/products?filter[category]=x&take=x 

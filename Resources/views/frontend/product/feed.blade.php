@@ -1,0 +1,1 @@
+@include('ifeed::frontend.product.atom')

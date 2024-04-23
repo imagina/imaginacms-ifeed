@@ -43,7 +43,7 @@ class Product extends EntityProducts implements Feedable
   {
 
     //Limit
-    $params = ifeedGetParamsToProducts($request);
+    $params = ifeedGetParamsToItems($request);
    
     //Repository Call
     $productItems = app("Modules\Icommerce\Repositories\ProductRepository")->getItemsBy(json_decode(json_encode(($params))));

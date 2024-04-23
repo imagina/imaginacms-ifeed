@@ -4,12 +4,12 @@
  *  /feed/products?filter={"category":x}&take=x
  *  /feed/products?filter[category]=x&take=x
  */
-if (!function_exists('ifeedGetParamsToProducts')) {
-    function ifeedGetParamsToProducts($request)
+if (!function_exists('ifeedGetParamsToItems')) {
+    function ifeedGetParamsToItems($request,$itemType='Products')
     {
 
         //Limit
-        $params['take'] = setting('ifeed::limitProductsRss');
+        $params['take'] = setting('ifeed::limit'.$itemType.'Rss');
         if($request->filled('take')) $params['take'] = $request->input('take');
         //Page
         if($request->filled('page')) $params['page'] = $request->input('page');

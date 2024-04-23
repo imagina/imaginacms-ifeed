@@ -28,7 +28,7 @@ php artisan module:seed Ifeed
 php artisan vendor:publish --provider="Spatie\Feed\FeedServiceProvider" --tag="feed-views"
 ```
 
-## Update View to Products
+## Update View to Products      (Posts case: the default view is used)
 In /config/asgard/feed.php
 ```bash
  'view' => 'ifeed::frontend.product.feed',
@@ -37,7 +37,10 @@ In /config/asgard/feed.php
 ## URL
 
 ### Base
-    mywebsiteurl/feed/products
+
+    mywebsiteurl/feed/posts         (Posts)
+
+    mywebsiteurl/feed/products      (Products)
 
 ### With params
 

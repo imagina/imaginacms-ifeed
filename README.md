@@ -28,14 +28,14 @@ php artisan module:seed Ifeed
 php artisan vendor:publish --provider="Spatie\Feed\FeedServiceProvider" --tag="feed-views"
 ```
 
-IMPORTANT:
-If the file (/config/feed.php) does not appear published, you must add in "config/app.php/ providers":
+#### IMPORTANT:
+If the file "config/feed.php" does not appear published, you must add in "config/app.php" => providers:
 
 ```bash
  Spatie\Feed\FeedServiceProvider::class
  ```
 
-and rerun the command to publish.
+and run the command to "publish config feed" again.
 
 ## Update View to Products      (Posts case: the default view is used)
 In /config/feed.php

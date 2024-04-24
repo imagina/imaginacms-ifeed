@@ -26,7 +26,7 @@ class Product extends EntityProducts implements Feedable
       'author' => '',
       'updated' => $this->updated_at,
       'link' => $this->url,
-      'description' => $this->description,
+      'description' => empty($this->description) ? '---' : $this->description,
       'availability' => $this->stock_status ? 'in stock' : 'out of stock',
       'condition' => 'new',
       'price' => isiteFormatMoney($this->price, true, 'asgard.ifeed.config.formatMoney'),

@@ -29,7 +29,7 @@ php artisan vendor:publish --provider="Spatie\Feed\FeedServiceProvider" --tag="f
 ```
 
 ## Update View to Products      (Posts case: the default view is used)
-In /config/asgard/feed.php
+In /config/feed.php
 ```bash
  'view' => 'ifeed::frontend.product.feed',
 ```

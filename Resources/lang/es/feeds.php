@@ -23,9 +23,5 @@ return [
   ],
   'validation' => [
   ],
-  'rss' => [
-    'groupName' => 'Rss',
-    'labelLimitPostsRss' => 'Limite de entradas del blog que aparecen en el rss',
-    'labelLimitProductsRss' => 'Limite de productos que aparecen en el rss',
-  ]
+
 ];

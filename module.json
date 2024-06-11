@@ -11,6 +11,8 @@
         "Modules\\Ifeed\\Providers\\RouteServiceProvider"
     ],
     "aliases": {},
-    "files": [],
+    "files": [
+        "helpers.php"
+    ],
     "requires": []
 }

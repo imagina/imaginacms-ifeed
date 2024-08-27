@@ -18,15 +18,25 @@ class Product extends EntityProducts implements Feedable
     //Get Image
     $image = $this->files->first(function ($item) { return $item->pivot->zone=='mainimage';});
 
+    //Format Information
+    $description = "---";
+    if(!empty($this->summary)){
+      $description = $this->summary;
+    }else{
+      if(!empty($this->description)){
+        $description = substr($this->description, 0, 9000);
+      }
+    }
+   
     //Final Data
     return FeedItem::create([
       'id' => $this->id,
       'title' => $this->name,
-      'summary' => $this->description,
+      'summary' => $this->summary,
       'author' => '',
       'updated' => $this->updated_at,
       'link' => $this->url,
-      'description' => empty($this->description) ? '---' : $this->description,
+      'description' => $description,
       'availability' => $this->stock_status ? 'in stock' : 'out of stock',
       'condition' => 'new',
       'price' => isiteFormatMoney($this->price, true, 'asgard.ifeed.config.formatMoney'),

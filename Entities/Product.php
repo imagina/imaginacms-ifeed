@@ -24,7 +24,7 @@ class Product extends EntityProducts implements Feedable
       $description = $this->summary;
     }else{
       if(!empty($this->description)){
-        $description = substr($this->description, 0, 9000);
+        $description = substr(strip_tags($this->description), 0, 9000);
       }
     }
    

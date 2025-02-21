@@ -2,8 +2,11 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Route;
 
-Router::feeds();
+Route::group(['middleware' => ['doNotCacheResponse']], function () {
+  Router::feeds();
+});
 $url = url('/');
 $url = str_replace('https://','',$url);
 config(['feed.feeds.posts.title' => trans('ifeed::feed.title.titlePosts'). ' ' . $url]);

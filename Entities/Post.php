@@ -15,12 +15,12 @@ class Post extends EntityPost implements Feedable
   {
     return FeedItem::create([
       'id' => $this->id,
-      'title' => $this->title,
-      'summary' => $this->summary,
-      'author' => $this->user->present()->fullname,
-      'updated' => $this->updated_at,
-      'link' => $this->url,
-      'status' => $this->status,
+      'title' => $this->title ?? 'title_post_'.$this->id,
+      'summary' => $this->summary ?? 'summary_post_'.$this->id,
+      'authorName' => $this->user->present()->fullname ?? 'author_post_'.$this->id,
+      'updated' => $this->updated_at ?? 'date_updated_post_'.$this->id,
+      'link' => $this->url ?? 'url_post_'.$this->id,
+      'status' => $this->status ?? 'status_post_'.$this->id,
     ]);
   }
 
@@ -40,7 +40,7 @@ class Post extends EntityPost implements Feedable
       $post->updated_at = $item->updated_at;
       //Preserve needed relations
       if ($item->relationLoaded('user')) $post->setRelation('user', $item->user);
-     
+
       //Response
       return $post;
     });
